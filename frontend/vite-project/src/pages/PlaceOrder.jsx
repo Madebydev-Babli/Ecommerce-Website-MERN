@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ShopDataContext } from "../context/ShopContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { AuthDataContext } from "../context/authContext";
+import { AuthDataContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
 export default function PlaceOrder() {
