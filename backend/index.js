@@ -25,7 +25,7 @@ app.use(
   cors({
     origin: [
       "https://ecommerce-website-mern-frontend-vc2w.onrender.com",
-      "http://localhost:5174",
+      "https://ecommerce-website-mern-1-admin.onrender.com",
     ],
     credentials: true,
   })
