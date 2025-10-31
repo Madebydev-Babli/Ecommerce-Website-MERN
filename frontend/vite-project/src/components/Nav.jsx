@@ -14,7 +14,7 @@ import {
 import { GiLargeDress } from "react-icons/gi";
 import { userDataContext } from "../context/UserContext";
 import axios from "axios";
-import { AuthDataContext } from "../context/authContext";
+import { AuthDataContext } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { ShopDataContext } from "../context/ShopContext";
 
