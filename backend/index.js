@@ -24,10 +24,8 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
+      "https://ecommerce-website-mern-frontend-vc2w.onrender.com",
       "http://localhost:5174",
-      "https://your-frontend-name.onrender.com", // ✅ add your deployed frontend URL here later
-      "https://yourfrontend.netlify.app"
     ],
     credentials: true,
   })
