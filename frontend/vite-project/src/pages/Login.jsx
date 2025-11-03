@@ -109,16 +109,6 @@ export default function Login() {
             className="w-full rounded-xl border border-[#E2C4B3] bg-[#FFF8F3]/80 px-4 py-3 text-[#3B2F2F] placeholder-[#9E8F7A] focus:ring-2 focus:ring-[#C19A8B]/50 focus:outline-none"
           />
 
-          {/* Forgot Password */}
-          <div className="text-right">
-            <span
-              onClick={() => navigate("/forgot-password")}
-              className="text-sm font-medium text-[#A6715A] hover:underline cursor-pointer"
-            >
-              Forgot password?
-            </span>
-          </div>
-
           {/* Submit */}
           <button
             type="submit"
