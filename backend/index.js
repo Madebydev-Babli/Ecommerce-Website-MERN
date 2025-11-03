@@ -40,6 +40,6 @@ app.use('/api/order', orderRouter);
 
 // ✅ Start server and connect to DB
 app.listen(port, () => {
-  console.log(✅ Server running on port ${port});
+  console.log(`✅ Server running on port ${port}`);
   ConnectDB();
 });
