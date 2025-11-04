@@ -41,7 +41,7 @@ function AdminOrders() {
   };
 
   return (
-    <div className="w-screen min-h-screen flex bg-gradient-to-br from-[#f3e0de] via-[#f9e6e3] to-[#fff]">
+    <div className="hidden sm:block fixed top-0 left-0 h-screen w-64 z-30 bg-[#f3e0de] border-r border-[#ead1c3]/80 shadow">
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Nav />
