@@ -1,3 +1,6 @@
+console.log('GENAI VERSION IS:', require('@google/generative-ai/package.json').version);
+
+
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
