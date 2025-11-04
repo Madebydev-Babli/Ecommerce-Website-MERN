@@ -41,11 +41,15 @@ function AdminOrders() {
   };
 
   return (
-    <div className="w-screen min-h-screen flex bg-gradient-to-br from-[#f3e0de] via-[#f9e6e3] to-[#fff]">
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
+    <div className="w-screen min-h-screen bg-gradient-to-br from-[#f3e0de] via-[#f9e6e3] to-[#fff] flex">
+      {/* Sidebar: fixed on desktop, not fixed on mobile */}
+      <div className="hidden sm:block fixed left-0 top-0 h-screen w-64 z-30 bg-[#f3e0de] border-r border-[#ead1c3]/80 shadow">
+        <Sidebar />
+      </div>
+      {/* Main content: push for sidebar only on desktop */}
+      <div className="flex-1 flex flex-col w-full sm:ml-64">
         <Nav />
-        <div className="flex flex-col mt-5 flex-1 items-center relative px-2 sm:px-4 lg:px-8 mt-16 w-full overflow-y-auto pb-12">
+        <div className="flex flex-col flex-1 items-center relative px-2 sm:px-4 lg:px-8 mt-16 w-full overflow-y-auto pb-12">
           {/* Animated header */}
           <motion.h2
             className="text-2xl lg:text-3xl font-bold mb-6 text-[#6b302c] drop-shadow-sm text-center"
@@ -55,6 +59,9 @@ function AdminOrders() {
           >
             📦 All Orders
           </motion.h2>
+
+          {/* Rest of your orders/table/cards/modal unchanged */}
+          {/* ... paste all content here, no changes needed ... */}
 
           {orders.length === 0 ? (
             <motion.p
