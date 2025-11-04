@@ -33,12 +33,14 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#DCC7B8] via-[#D6B2A4] to-[#C19A8B]">
+  <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#DCC7B8] via-[#D6B2A4] to-[#C19A8B]">
+    {/* Outer responsive margin */}
+    <div className="w-full mx-2 sm:mx-0 py-12 flex justify-center">
       <motion.div
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="bg-[#F8EFEA]/90 backdrop-blur-md border border-[#E2C4B3]/60 rounded-3xl shadow-lg p-10 w-full max-w-md"
+        className="bg-[#F8EFEA]/90 backdrop-blur-md border border-[#E2C4B3]/60 rounded-3xl shadow-lg p-6 sm:p-10 w-full max-w-md"
       >
         <h2 className="text-3xl font-bold text-[#3B2F2F] text-center mb-8 tracking-wide">
           Admin Login
@@ -56,7 +58,6 @@ export default function Login() {
               required
             />
           </div>
-
           {/* Password */}
           <div>
             <label className="block text-[#5A4A3F] font-semibold mb-1">Password</label>
@@ -70,7 +71,6 @@ export default function Login() {
             />
           </div>
 
-          {/* Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -82,5 +82,6 @@ export default function Login() {
         </form>
       </motion.div>
     </div>
-  );
-}
+  </div>
+);
+
