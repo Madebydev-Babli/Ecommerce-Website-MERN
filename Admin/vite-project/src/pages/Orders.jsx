@@ -41,12 +41,15 @@ function AdminOrders() {
   };
 
   return (
-    <div className="w-screen h-screen mt-5 flex bg-gradient-to-br from-[#f3e0de] via-[#f9e6e3] to-[#fff] overflow-hidden">
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
+    <div className="w-screen min-h-screen bg-gradient-to-br from-[#f3e0de] via-[#f9e6e3] to-[#fff] flex">
+      {/* Sidebar: fixed on desktop, not fixed on mobile */}
+      <div className="hidden sm:block fixed left-0 top-0 h-screen w-64 z-30 bg-[#f3e0de] border-r border-[#ead1c3]/80 shadow">
+        <Sidebar />
+      </div>
+      {/* Main content: push for sidebar only on desktop */}
+      <div className="flex-1 flex flex-col w-full sm:ml-64">
         <Nav />
-
-        <div className="flex flex-col flex-1 items-center relative px-2 sm:px-4 lg:px-8 mt-16 w-full">
+        <div className="flex flex-col flex-1 mt-5 items-center relative px-2 sm:px-4 lg:px-8 mt-16 w-full overflow-y-auto pb-12">
           {/* Animated header */}
           <motion.h2
             className="text-2xl lg:text-3xl font-bold mb-6 text-[#6b302c] drop-shadow-sm text-center"
@@ -56,6 +59,9 @@ function AdminOrders() {
           >
             📦 All Orders
           </motion.h2>
+
+          {/* Rest of your orders/table/cards/modal unchanged */}
+          {/* ... paste all content here, no changes needed ... */}
 
           {orders.length === 0 ? (
             <motion.p
@@ -130,7 +136,6 @@ function AdminOrders() {
                               <option value="Delivered">Delivered</option>
                               <option value="Cancelled">Cancelled</option>
                             </select>
-
                           </td>
                           <td className="p-2 sm:p-3 text-center">
                             <button
@@ -165,7 +170,6 @@ function AdminOrders() {
                       transition={{ duration: 0.4, delay: i * 0.07 }}
                       className="bg-[#fffdfc] border border-[#ecd1cd] rounded-xl shadow-md p-4"
                     >
-                      {/* Order info as before... */}
                       <div className="mb-2">
                         <span className="font-semibold text-[#6b302c]">
                           Order ID:{" "}
@@ -318,6 +322,6 @@ function AdminOrders() {
       </div>
     </div>
   );
-};
+}
 
 export default memo(AdminOrders);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { ShopDataContext } from "../context/ShopContext";
-import { AuthDataContext } from "../context/authContext";
+import { AuthDataContext } from "../context/AuthContext";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
