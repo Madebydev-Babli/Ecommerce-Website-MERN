@@ -49,7 +49,7 @@ function AdminOrders() {
       {/* Main content: push for sidebar only on desktop */}
       <div className="flex-1 flex flex-col w-full sm:ml-64">
         <Nav />
-        <div className="flex flex-col flex-1 items-center relative px-2 sm:px-4 lg:px-8 mt-16 w-full overflow-y-auto pb-12">
+        <div className="flex flex-col flex-1 mt-5 items-center relative px-2 sm:px-4 lg:px-8 mt-16 w-full overflow-y-auto pb-12">
           {/* Animated header */}
           <motion.h2
             className="text-2xl lg:text-3xl font-bold mb-6 text-[#6b302c] drop-shadow-sm text-center"
