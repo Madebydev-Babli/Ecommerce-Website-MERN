@@ -24,8 +24,8 @@ aiRouter.post('/generate-description', async (req, res) => {
 
     res.json({ description });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "AI description error" });
+    console.error('Gemini error:', err);
+    res.status(500).json({ error: `AI description error ${err.message}` });
   }
 });
 
