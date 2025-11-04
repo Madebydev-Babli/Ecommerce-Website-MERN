@@ -41,9 +41,13 @@ function AdminOrders() {
   };
 
   return (
-    <div className="hidden sm:block fixed top-0 left-0 h-screen w-64 z-30 bg-[#f3e0de] border-r border-[#ead1c3]/80 shadow">
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
+    <div className="w-screen min-h-screen bg-gradient-to-br from-[#f3e0de] via-[#f9e6e3] to-[#fff] flex">
+      {/* Fixed Sidebar */}
+      <div className="hidden sm:block fixed top-0 left-0 h-screen w-64 z-30 bg-[#f3e0de] border-r border-[#ead1c3]/80 shadow">
+        <Sidebar />
+      </div>
+      {/* Main: add left margin for sidebar */}
+      <div className="flex-1 flex flex-col" style={{ marginLeft: "16rem" }}>
         <Nav />
         <div className="flex flex-col flex-1 items-center relative px-2 sm:px-4 lg:px-8 mt-16 w-full overflow-y-auto pb-12">
           {/* Animated header */}
