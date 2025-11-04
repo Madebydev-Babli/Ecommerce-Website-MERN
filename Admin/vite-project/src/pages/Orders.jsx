@@ -41,12 +41,11 @@ function AdminOrders() {
   };
 
   return (
-    <div className="w-screen h-screen mt-5 flex bg-gradient-to-br from-[#f3e0de] via-[#f9e6e3] to-[#fff] overflow-hidden">
+    <div className="w-screen min-h-screen flex bg-gradient-to-br from-[#f3e0de] via-[#f9e6e3] to-[#fff]">
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Nav />
-
-        <div className="flex flex-col flex-1 items-center relative px-2 sm:px-4 lg:px-8 mt-16 w-full">
+        <div className="flex flex-col flex-1 items-center relative px-2 sm:px-4 lg:px-8 mt-16 w-full overflow-y-auto pb-12">
           {/* Animated header */}
           <motion.h2
             className="text-2xl lg:text-3xl font-bold mb-6 text-[#6b302c] drop-shadow-sm text-center"
@@ -130,7 +129,6 @@ function AdminOrders() {
                               <option value="Delivered">Delivered</option>
                               <option value="Cancelled">Cancelled</option>
                             </select>
-
                           </td>
                           <td className="p-2 sm:p-3 text-center">
                             <button
@@ -165,7 +163,6 @@ function AdminOrders() {
                       transition={{ duration: 0.4, delay: i * 0.07 }}
                       className="bg-[#fffdfc] border border-[#ecd1cd] rounded-xl shadow-md p-4"
                     >
-                      {/* Order info as before... */}
                       <div className="mb-2">
                         <span className="font-semibold text-[#6b302c]">
                           Order ID:{" "}
@@ -318,6 +315,6 @@ function AdminOrders() {
       </div>
     </div>
   );
-};
+}
 
 export default memo(AdminOrders);
