@@ -43,13 +43,13 @@ export default function Footer() {
           </a>
           {/* Socials: Instagram, LinkedIn, Fiverr */}
           <div className="flex gap-3 mt-1">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/builtbybabli/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <Instagram className="w-5 h-5 hover:text-pink-200 transition" />
             </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/babli-chauhan/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Linkedin className="w-5 h-5 hover:text-blue-200 transition" />
             </a>
-            <a href="https://www.fiverr.com" target="_blank" rel="noopener noreferrer" aria-label="Fiverr">
+            <a href="https://www.fiverr.com/babli_chauhan/" target="_blank" rel="noopener noreferrer" aria-label="Fiverr">
               <Link2 className="w-5 h-5 hover:text-green-200 transition" />
             </a>
           </div>
