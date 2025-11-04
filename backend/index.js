@@ -9,6 +9,7 @@ const userRoute = require('./routes/userRoutes');
 const productRoute = require('./routes/productRoutes');
 const cartRouter = require('./routes/cartRoutes');
 const orderRouter = require('./routes/orderRoutes');
+const aiRouter = require('./routes/aiRoutes');
 
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.use('/api/user',userRoute);
 app.use('/api/product',productRoute);
 app.use('/api/cart',cartRouter);
 app.use('/api/order',orderRouter);
+app.use('/api/gemini',aiRouter);
 
 
 
