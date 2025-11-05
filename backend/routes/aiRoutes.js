@@ -17,7 +17,7 @@ aiRouter.post('/generate-description', async (req, res) => {
     Keep it 2-3 sentences, friendly and persuasive.
   `;
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
     const result = await model.generateContent(prompt);
     const description = result.response.text();
 
