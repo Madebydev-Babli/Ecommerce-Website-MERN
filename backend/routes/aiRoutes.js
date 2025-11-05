@@ -1,8 +1,12 @@
 const express = require('express');
 const aiRouter = express.Router();
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const OpenAI = require("openai");
+require("dotenv").config();
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const openai = new OpenAI({
+  apiKey: process.env.GROQ_API_KEY,
+  baseURL: "https://api.groq.com/openai/v1"
+});
 
 aiRouter.post('/generate-description', async (req, res) => {
   const { name, category, subCategory, sizes, bestSeller } = req.body;
@@ -16,15 +20,18 @@ aiRouter.post('/generate-description', async (req, res) => {
     ${bestSeller ? "- This is a best seller!" : ""}
     Keep it 2-3 sentences, friendly and persuasive.
   `;
-  try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
-    const result = await model.generateContent(prompt);
-    const description = result.response.text();
 
+  try {
+    const response = await openai.chat.completions.create({
+      model: "llama-3.3-70b-versatile",
+      messages: [{ role: "user", content: prompt }],
+    });
+
+    const description = response.choices[0].message.content;
     res.json({ description });
   } catch (err) {
-    console.error('Gemini error:', err);
-    res.status(500).json({ error: `AI description error ${err.message}` });
+    console.error("Groq AI error:", err);
+    res.status(500).json({ error: `AI description error: ${err.message}` });
   }
 });
 

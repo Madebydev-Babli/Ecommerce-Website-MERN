@@ -1,6 +1,3 @@
-console.log('GENAI VERSION IS:', require('@google/generative-ai/package.json').version);
-
-
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
@@ -41,7 +38,7 @@ app.use('/api/user',userRoute);
 app.use('/api/product',productRoute);
 app.use('/api/cart',cartRouter);
 app.use('/api/order',orderRouter);
-app.use('/api/gemini',aiRouter);
+app.use('/api/ai',aiRouter);
 
 // Routes
 app.use('/api/auth', authRoutes);
