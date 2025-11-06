@@ -16,15 +16,24 @@ import Orders from './pages/Orders';
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  let { userData } = useContext(userDataContext);
-  let location = useLocation();
+  const { userData } = useContext(userDataContext);
+  const location = useLocation();
 
   return (
     <>
-    <Toaster position="top-center" />
-      {userData && <Nav />}
+      <Toaster position="top-center" />
+      <Nav />  {/* Always show navbar */}
+
       <Routes>
-        {/* Login and Signup routes can always be accessed IF not logged in */}
+        {/* Public Routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/collection" element={<Collection />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/productdetail/:id" element={<ProductDetail />} />
+
+        {/* Auth Routes */}
         <Route
           path="/login"
           element={
@@ -42,55 +51,7 @@ function App() {
           }
         />
 
-        {/* PROTECTED ROUTES: redirect to /login if no userData */}
-        <Route
-          path="/"
-          element={
-            userData
-              ? <Home />
-              : <Navigate to="/login" state={{ from: location.pathname }} replace />
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            userData
-              ? <About />
-              : <Navigate to="/login" state={{ from: location.pathname }} replace />
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            userData
-              ? <Contact />
-              : <Navigate to="/login" state={{ from: location.pathname }} replace />
-          }
-        />
-        <Route
-          path="/collection"
-          element={
-            userData
-              ? <Collection />
-              : <Navigate to="/login" state={{ from: location.pathname }} replace />
-          }
-        />
-        <Route
-          path="/product"
-          element={
-            userData
-              ? <Product />
-              : <Navigate to="/login" state={{ from: location.pathname }} replace />
-          }
-        />
-        <Route
-          path="/productdetail/:id"
-          element={
-            userData
-              ? <ProductDetail />
-              : <Navigate to="/login" state={{ from: location.pathname }} replace />
-          }
-        />
+        {/* Protected Routes */}
         <Route
           path="/cart"
           element={
