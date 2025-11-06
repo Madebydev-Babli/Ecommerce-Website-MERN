@@ -86,15 +86,20 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
     try {
-        res.clearCookie("token")
-        return res.status(200).json({ message: "Logout SuccessFully" })
+        res.clearCookie("token", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none"
+        });
+        return res.status(200).json({ message: "Logout SuccessFully" });
     } catch (error) {
         return res.status(500).json({
             success: false,
             message: `Logout error${error.message}`
-        })
+        });
     }
-}
+};
+
 
 
 
