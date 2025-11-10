@@ -33,12 +33,8 @@ app.use(
 );
 
 
-app.use('/api/auth',authRoutes);
-app.use('/api/user',userRoute);
-app.use('/api/product',productRoute);
-app.use('/api/cart',cartRouter);
-app.use('/api/order',orderRouter);
-app.use('/api/ai',aiRouter);
+
+
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -46,6 +42,7 @@ app.use('/api/user', userRoute);
 app.use('/api/product', productRoute);
 app.use('/api/cart', cartRouter);
 app.use('/api/order', orderRouter);
+app.use('/api/ai',aiRouter);
 
 // ✅ Start server and connect to DB
 app.listen(port, () => {

@@ -1,7 +1,7 @@
 const User = require('../model/userModel');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
-const { generateToken, generatetoken1, generateToken1 } = require('../config/token');
+const { generateToken, generateToken1 } = require('../config/token');
 
 const registration = async (req, res) => {
     try {
@@ -133,7 +133,7 @@ const adminLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-            let token = await generateToken(email);
+            let token = await generateToken1(email);
             res.cookie("token", token, {
                 httpOnly: true,
                 secure: true,
