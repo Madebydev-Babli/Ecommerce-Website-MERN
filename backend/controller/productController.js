@@ -36,13 +36,15 @@ const addProduct = async (req,res) => {
 
 
 
-const listProduct = async (req,res) => {
+const fetchProduct = async (req,res) => {
     try {
         const product = await Product.find({});
         return res.status(201).json(product);
     } catch (error) {
-        console.log("ListProduct error")
-        return res.status(500).json({message:`ListProduct error${error}`})
+        console.log("fetchProduct error")
+        return res.status(500).json({
+            message:`fetchProduct error${error}`
+        })
     }
 }
 

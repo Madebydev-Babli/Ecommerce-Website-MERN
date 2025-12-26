@@ -1,9 +1,8 @@
 const Order = require("../model/orderModel");
 const User = require("../model/userModel");
 const Razorpay = require("razorpay");
-const dotenv = require('dotenv')
+const sendEmail = require("../utils/sendEmail");
 
-dotenv.config();
 
 const currency = "INR";
 
@@ -134,11 +133,39 @@ const allOrders = async (req, res) => {
 const updateStatus = async (req, res) => {
   try {
     const { orderId, status } = req.body;
-    await Order.findByIdAndUpdate(orderId, { status });
-    return res.status(200).json({ message: "Status Updated" });
+
+    // 1️⃣ Find order + user email
+    const order = await Order.findById(orderId).populate("userId");
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    // 2️⃣ Update status
+    order.status = status;
+    await order.save();
+
+    // 3️⃣ Send email notification
+    await sendEmail(
+      order.userId.email,
+      "Order Status Updated",
+      `
+        <h2>Your order status has been updated 🚀</h2>
+        <p><strong>Order ID:</strong> ${order._id}</p>
+        <p><strong>Your Order is:</strong> ${status}</p>
+        <p>Thank you for shopping with us 💛</p>
+      `
+    );
+
+    // 4️⃣ Response
+    return res.status(200).json({
+      message: "Status updated and email sent successfully",
+    });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json(`{ message: updateStatus error: ${error} }`);
+    console.error("updateStatus error:", error);
+    return res.status(500).json({
+      message: "Something went wrong while updating status",
+    });
   }
 };
 
@@ -148,5 +175,5 @@ module.exports = {
   userOrder,
   allOrders,
   updateStatus,
-  verifyRazorpay
+  verifyRazorpay,
 };

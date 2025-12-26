@@ -44,6 +44,7 @@ app.use('/api/cart', cartRouter);
 app.use('/api/order', orderRouter);
 app.use('/api/ai',aiRouter);
 
+
 // ✅ Start server and connect to DB
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);

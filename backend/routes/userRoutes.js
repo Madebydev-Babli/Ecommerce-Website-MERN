@@ -9,3 +9,5 @@ userRoute.get("/getcurrentuser",isAuth,getCurrentUser);
 userRoute.get("/getadmin",AdminAuth,getAdmin);
 
 module.exports = userRoute;
+
+
