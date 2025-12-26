@@ -32,7 +32,7 @@ function AdminOrders() {
           { withCredentials: true }
         );
     
-        fetchOrders();
+        await fetchOrders();
     
       } catch (error) {
         console.error("Error updating status:", error);
