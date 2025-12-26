@@ -33,7 +33,8 @@ function AdminOrders() {
         { withCredentials: true }
       );
       setOrders((prev) =>
-        prev.map((o) => (o._id === orderId ? { ...o, status } : o))
+        prev.map((o) => (o._id === orderId ? { ...o, status:
+          res.data.order.status } : o))
       );
     } catch (error) {
       console.error("Error updating status:", error);
