@@ -27,19 +27,20 @@ function AdminOrders() {
 
   const updateStatus = async (orderId, status) => {
     try {
-      const res = await axios.post(
+      await axios.post(
         `${serverUrl}/api/order/status`,
         { orderId, status },
         { withCredentials: true }
       );
   
-      setOrders((prev) =>
-        prev.map((o) =>
-          o._id === orderId ? { ...o, status } : o
-        )
+      const refreshed = await axios.get(
+        `${serverUrl}/api/order/all`,
+        { withCredentials: true }
       );
+  
+      setOrders(refreshed.data);
     } catch (error) {
-      console.error("Error updating status:", error);
+      console.error(error);
     }
   };
 
