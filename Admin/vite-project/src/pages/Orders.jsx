@@ -11,7 +11,7 @@ function AdminOrders() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const { serverUrl } = useContext(AuthDataContext);
 
-  useEffect(() => {
+
     const fetchOrders = async () => {
       try {
         const res = await axios.get(`${serverUrl}/api/order/all`, {
@@ -22,27 +22,27 @@ function AdminOrders() {
         console.error("Error fetching orders:", error);
       }
     };
-    fetchOrders();
-  }, [serverUrl]);
 
-  const updateStatus = async (orderId, status) => {
-    try {
-      await axios.post(
-        `${serverUrl}/api/order/status`,
-        { orderId, status },
-        { withCredentials: true }
-      );
-  
-      const refreshed = await axios.get(
-        `${serverUrl}/api/order/all`,
-        { withCredentials: true }
-      );
-  
-      setOrders(refreshed.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
+    const updateStatus = async (orderId, status) => {
+      try {
+        await axios.post(
+          `${serverUrl}/api/order/status`,
+          { orderId, status },
+          { withCredentials: true }
+        );
+    
+        fetchOrders();
+    
+      } catch (error) {
+        console.error("Error updating status:", error);
+      }
+    };
+
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
 
 
   return (
