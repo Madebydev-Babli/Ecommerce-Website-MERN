@@ -159,8 +159,14 @@ const updateStatus = async (req, res) => {
 
     // 4️⃣ Response
     return res.status(200).json({
+      success: true,
       message: "Status updated and email sent successfully",
+      order: {
+        _id: order._id,
+        status: order.status
+      }
     });
+
   } catch (error) {
     console.error("updateStatus error:", error);
     return res.status(500).json({
@@ -168,6 +174,7 @@ const updateStatus = async (req, res) => {
     });
   }
 };
+
 
 module.exports = {
   placeOrder,
