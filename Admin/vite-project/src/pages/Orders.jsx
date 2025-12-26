@@ -114,8 +114,7 @@ function AdminOrders() {
                         0
                       );
                       return (
-                        <motion.tr
-                          key={order._id}
+                        <motion.tr key={`${order._id}-${order.status}`}
                           className="hover:bg-[#fff6f5] transition-all duration-200 border-b border-[#f3d5d2]"
                           initial={{ opacity: 0, y: 24 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -168,8 +167,7 @@ function AdminOrders() {
                     0
                   );
                   return (
-                    <motion.div
-                      key={order._id}
+                    <motion.tr key={`${order._id}-${order.status}`}
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: i * 0.07 }}
