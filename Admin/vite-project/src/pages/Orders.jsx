@@ -27,19 +27,22 @@ function AdminOrders() {
 
   const updateStatus = async (orderId, status) => {
     try {
-      await axios.post(
+      const res = await axios.post(
         `${serverUrl}/api/order/status`,
         { orderId, status },
         { withCredentials: true }
       );
+  
       setOrders((prev) =>
-        prev.map((o) => (o._id === orderId ? { ...o, status:
-          res.data.order.status } : o))
+        prev.map((o) =>
+          o._id === orderId ? { ...o, status } : o
+        )
       );
     } catch (error) {
       console.error("Error updating status:", error);
     }
   };
+
 
   return (
     <div className="w-screen min-h-screen bg-gradient-to-br from-[#f3e0de] via-[#f9e6e3] to-[#fff] flex">
