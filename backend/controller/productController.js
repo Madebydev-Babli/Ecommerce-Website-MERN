@@ -36,7 +36,7 @@ const addProduct = async (req,res) => {
 
 
 
-const fetchProduct = async (req,res) => {
+const listProduct = async (req,res) => {
     try {
         const product = await Product.find({});
         return res.status(201).json(product);
