@@ -12,7 +12,7 @@ export default function Order() {
   const [loading, setLoading] = useState(true);
   const [showStatusMap, setShowStatusMap] = useState({}); 
 
-  useEffect(() => {
+  
     const fetchOrders = async () => {
       try {
         const { data } = await axios.get(`${serverUrl}/api/order/userorder`, {
@@ -26,7 +26,11 @@ export default function Order() {
       }
     };
     fetchOrders();
-  }, [serverUrl]);
+  
+  useEffect(() => {
+    fetchOrders()
+  }, []);
+
 
   const toggleStatus = (orderId) => {
     setShowStatusMap((prev) => ({
