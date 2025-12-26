@@ -227,7 +227,7 @@ function AdminOrders() {
                       >
                         View
                       </button>
-                    </motion.div>
+                    </motion.tr>
                   );
                 })}
               </div>
