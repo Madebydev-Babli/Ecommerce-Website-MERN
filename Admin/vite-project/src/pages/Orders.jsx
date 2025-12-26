@@ -123,7 +123,7 @@ function AdminOrders() {
                           <td className="p-2 sm:p-3 font-semibold text-[#6b302c]">₹{total}</td>
                           <td className="p-2 sm:p-3">
                             <select
-                              value={order.status || "Pending"}
+                              value={order.status}
                               onChange={(e) =>
                                 updateStatus(order._id, e.target.value)
                               }
