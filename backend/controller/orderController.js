@@ -129,7 +129,6 @@ const allOrders = async (req, res) => {
   }
 };
 
-// Update status
 const updateStatus = async (req, res) => {
   try {
     const { orderId, status } = req.body;
@@ -145,8 +144,18 @@ const updateStatus = async (req, res) => {
     order.status = status;
     await order.save();
 
-    // 3️⃣ Send email notification
-    await sendEmail(
+    // 3️⃣ SEND RESPONSE FIRST 
+    res.status(200).json({
+      success: true,
+      message: "Status updated",
+      order: {
+        _id: order._id,
+        status: order.status,
+      },
+    });
+
+    // 4️⃣ Send email AFTER response (NON-BLOCKING)
+    sendEmail(
       order.userId.email,
       "Order Status Updated",
       `
@@ -155,16 +164,8 @@ const updateStatus = async (req, res) => {
         <p><strong>Your Order is:</strong> ${status}</p>
         <p>Thank you for shopping with us 💛</p>
       `
-    );
-
-    // 4️⃣ Response
-    return res.status(200).json({
-      success: true,
-      message: "Status updated and email sent successfully",
-      order: {
-        _id: order._id,
-        status: order.status
-      }
+    ).catch((err) => {
+      console.error("Email failed:", err.message);
     });
 
   } catch (error) {
