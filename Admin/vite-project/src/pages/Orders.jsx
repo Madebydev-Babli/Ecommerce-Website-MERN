@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, memo } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthDataContext } from "../context/AuthContext";
 import Sidebar from "../components/Sidebar";
@@ -32,8 +32,14 @@ function AdminOrders() {
           { withCredentials: true }
         );
     
-        await fetchOrders();
-    
+
+        setOrders((prevOrders) =>
+          prevOrders.map((order) =>
+            order._id === orderId
+              ? { ...order, status }
+              : order
+          )
+        );
       } catch (error) {
         console.error("Error updating status:", error);
       }
@@ -114,7 +120,7 @@ function AdminOrders() {
                         0
                       );
                       return (
-                        <motion.tr key={`${order._id}-${order.status}`}
+                        <motion.tr key={order._id}
                           className="hover:bg-[#fff6f5] transition-all duration-200 border-b border-[#f3d5d2]"
                           initial={{ opacity: 0, y: 24 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -167,7 +173,7 @@ function AdminOrders() {
                     0
                   );
                   return (
-                    <motion.tr key={`${order._id}-${order.status}`}
+                    <motion.tr key={order._id}
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: i * 0.07 }}
@@ -327,4 +333,4 @@ function AdminOrders() {
   );
 }
 
-export default memo(AdminOrders);
+export default AdminOrders;
