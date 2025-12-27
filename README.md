@@ -76,8 +76,8 @@ Integrated via API calls from backend
 ⚙️ Installation & Setup
 1️⃣ Clone the repository
 Bash
-git clone https://github.com/Madebydev-Babli/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/Madebydev-Babli/Ecommerce-Website-MERN.git
+cd Ecommerce-Website-MERN
 
 2️⃣ Backend Setup
 Bash
