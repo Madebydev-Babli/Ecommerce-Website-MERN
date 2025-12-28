@@ -22,6 +22,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (loading) return;
+    setLoading(true);
     try {
       const { email, password } = formData;
       await axios.post(
@@ -39,6 +40,7 @@ export default function Login() {
       toast.error(message);
     } finally {
       setLoading(false);
+    }
   };
 
   const googleLogin = async () => {
@@ -140,4 +142,4 @@ export default function Login() {
       </motion.div>
     </div>
   );
-}}
+}
