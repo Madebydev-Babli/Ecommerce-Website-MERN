@@ -7,6 +7,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../utils/Firebase";
 import { userDataContext } from "../context/UserContext";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -35,10 +36,14 @@ export default function Signup() {
         { name, email, password },
         { withCredentials: true }
       );
+      toast.success("Registration Successful")
       getCurrentUser();
       navigate("/");
     } catch (error) {
       console.log(error);
+      const message = error.response?.data?.message ||
+      "Registration Failed";
+      toast.error(message);
     }
   };
 
@@ -51,10 +56,14 @@ export default function Signup() {
         { name: user.displayName, email: user.email },
         { withCredentials: true }
       );
+      toast.success("Registration Successful")
       getCurrentUser();
       navigate("/");
     } catch (error) {
       console.log(error);
+      const message = error.response?.data?.message ||
+      "Registration Failed";
+      toast.error(message);
     }
   };
 

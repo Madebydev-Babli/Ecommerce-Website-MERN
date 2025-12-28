@@ -7,6 +7,7 @@ import { auth, provider } from "../../utils/Firebase";
 import { AuthDataContext } from "../context/AuthContext";
 import { userDataContext } from "../context/UserContext";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -26,10 +27,14 @@ export default function Login() {
         { email, password },
         { withCredentials: true }
       );
+      toast.success("Login Successfully");
       getCurrentUser();
       navigate("/");
     } catch (error) {
       console.log(error);
+      const message = error.response?.data?.message ||
+      "Login Failed";
+      toast.error(message);
     }
   };
 
@@ -43,6 +48,7 @@ export default function Login() {
         { withCredentials: true }
       );
       console.log(result.data);
+      toast.success("Login Successfully");
       getCurrentUser();
       navigate("/");
     } catch (error) {
