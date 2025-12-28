@@ -15,6 +15,7 @@ export default function Signup() {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
   let { serverUrl } = useContext(AuthDataContext);
   let { getCurrentUser } = useContext(userDataContext);
@@ -29,6 +30,8 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return; // prevent double click
+    setLoading(true);
     try {
       const { name, email, password } = formData;
       await axios.post(
@@ -44,6 +47,8 @@ export default function Signup() {
       const message = error.response?.data?.message ||
       "Registration Failed";
       toast.error(message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -142,7 +147,7 @@ export default function Signup() {
             type="submit"
             className="w-full rounded-xl bg-gradient-to-r from-[#B89982] to-[#A6715A] px-4 py-3 font-semibold text-white shadow-md hover:from-[#A88771] hover:to-[#8C604B] transition-all duration-300"
           >
-            Sign Up
+            {loading ? "Creating Account...." : "Create Account"}
           </button>
         </form>
 

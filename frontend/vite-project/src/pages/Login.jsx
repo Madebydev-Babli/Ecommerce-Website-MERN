@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const { serverUrl } = useContext(AuthDataContext);
   const { getCurrentUser } = useContext(userDataContext);
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
     try {
       const { email, password } = formData;
       await axios.post(
@@ -35,7 +37,8 @@ export default function Login() {
       const message = error.response?.data?.message ||
       "Login Failed";
       toast.error(message);
-    }
+    } finally {
+      setLoading(false);
   };
 
   const googleLogin = async () => {
@@ -120,7 +123,7 @@ export default function Login() {
             type="submit"
             className="w-full rounded-xl bg-gradient-to-r from-[#B89982] to-[#A6715A] px-4 py-3 font-semibold text-white shadow-md hover:from-[#A88771] hover:to-[#8C604B] transition-all duration-300"
           >
-            Log In
+           {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
