@@ -15,8 +15,8 @@ function App() {
 
   return (
     <>
+    <Toaster position="top-right" reverseOrder={false} />
       {!adminData ? <Login/> : <>
-        <Toaster position="top-right" reverseOrder={false} />
         <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/add' element={<Add/>}/>
